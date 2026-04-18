@@ -1,3 +1,5 @@
+//Implementing Queue using Array
+
 class Queue{
 
     int[] arr = new int[5];
