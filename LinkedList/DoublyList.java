@@ -31,6 +31,30 @@ class DoublyList{
         }
     }
 
+    void deleteAtBeginning(){
+        if(head == null){
+            System.out.println("List is Empty.");
+        } else if(head.next = null){
+            head = temp = null;
+
+        } else{
+            head = head.next;
+            head.prev = null;
+        }
+    }
+
+    void deleteAtEnd(){
+        if(head == null){
+            System.out.println("List is Empty.");
+        } else if(head.next = null){
+            head = temp = null;
+
+        } else{
+            temp = temp.prev;
+            temp.next = null;
+        }
+    }
+
     void display(){
         Node i = head;
         while(i != null){
@@ -47,5 +71,8 @@ class DoublyList{
         l.create(2);
 
         l.display();
+
+        l.deleteAtBeginning();
+        l.deleteAtEnd();
     }
 }
