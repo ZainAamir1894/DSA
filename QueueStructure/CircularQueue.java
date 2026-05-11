@@ -38,6 +38,8 @@ public class CircularQueue{
         } else{
             System.out.println("Removed: " + arr[front] + " from Queue");
             front = (front + 1) % n;
+
+            // 5 % 5 = 0 , 1 % 5 = 1 and so on to keep indexes circular 
         }
     }
 

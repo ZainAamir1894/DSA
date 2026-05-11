@@ -51,6 +51,52 @@ public class BinarySearchTree{
 
     }
 
+    //Find the largest from left subtree
+    public Node inOrderPredecessor(Node root){
+        root = root.left;
+        while(root.right != null){
+            root = root.right;
+        }
+        return root;
+
+    }
+
+    public Node deleteNode(Node root, int value){
+        if (root == null) return null;
+
+    if (value < root.data) {
+        root.left = deleteNode(root.left, value);
+    }
+
+    else if (value > root.data) {
+        root.right = deleteNode(root.right, value);
+    }
+
+    else {
+        //leaf
+        if (root.left == null && root.right == null) {
+            return null;
+        }
+
+        //one child
+        else if (root.left == null) {
+            return root.right;
+        }
+        else if (root.right == null) {
+            return root.left;
+        }
+
+        //two children
+        else {
+            Node temp = inOrderPredecessor(root);
+            root.data = temp.data;
+            root.left = deleteNode(root.left, temp.data);
+        }
+        
+        }
+        return root;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
 
@@ -61,6 +107,12 @@ public class BinarySearchTree{
         tree.insert(2);
         tree.insert(5);
 
+        tree.Traversal();
+
+        tree.root = tree.deleteNode(tree.root , 7);
+
+        System.out.println();
+        System.out.println("New Tree: ");
         tree.Traversal();
     }
 }
